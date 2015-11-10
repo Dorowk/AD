@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTK_Articulo", "GTK_Articulo\GTK_Articulo.csproj", "{8717ED6C-3A8B-4AE6-A988-ECB1C07DB0E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8717ED6C-3A8B-4AE6-A988-ECB1C07DB0E6}.Debug|x86.ActiveCfg = Debug|x86
+		{8717ED6C-3A8B-4AE6-A988-ECB1C07DB0E6}.Debug|x86.Build.0 = Debug|x86
+		{8717ED6C-3A8B-4AE6-A988-ECB1C07DB0E6}.Release|x86.ActiveCfg = Release|x86
+		{8717ED6C-3A8B-4AE6-A988-ECB1C07DB0E6}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = GTK_Articulo\GTK_Articulo.csproj
+	EndGlobalSection
+EndGlobal

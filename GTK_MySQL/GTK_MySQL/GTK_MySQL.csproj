@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0BCF6DB6-E276-4E55-886F-720CB547A189}</ProjectGuid>
+    <ProjectGuid>{079BB86C-FF63-4517-8EA9-7E4D4023422F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Gtk_Prueba</RootNamespace>
-    <AssemblyName>Gtk_Prueba</AssemblyName>
+    <RootNamespace>GTK_MySQL</RootNamespace>
+    <AssemblyName>GTK_MySQL</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,10 +57,10 @@
       <Package>gtk-sharp-2.0</Package>
     </Reference>
     <Reference Include="Mono.Posix" />
-    <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\usr\lib\cli\MySql.Data-6.4\MySql.Data.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\..\usr\lib\cli\MySql.Data-6.4\MySql.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">

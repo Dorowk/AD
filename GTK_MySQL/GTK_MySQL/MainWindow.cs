@@ -1,6 +1,8 @@
 using System;
 using Gtk;
 using MySql.Data.MySqlClient;
+using System.Collections;
+using System.Collections.Generic;
 
 public partial class MainWindow: Gtk.Window
 {	
@@ -26,13 +28,13 @@ public partial class MainWindow: Gtk.Window
 			types [i] = typeof(String);
 		}
 		ListStore list = new ListStore (types);
-	
+
 		string[] listaNombres = new string[reader.FieldCount] ;
 
 		while (reader.Read()){
 			for (int i =0; i< reader.FieldCount; i++) {
 				listaNombres[i]=reader [reader.GetName(i)].ToString() ;
-				};
+			};
 			list.AppendValues(listaNombres);
 		}
 
@@ -40,7 +42,7 @@ public partial class MainWindow: Gtk.Window
 
 
 		connection.Close ();		
-	
+
 	}
 
 
