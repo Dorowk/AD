@@ -7,6 +7,7 @@ namespace GTK_Serpis
 	public class TreeViewHelper
 	{
 		public static void Fill(TreeView treeView, QueryResult queryResult) {
+			removeAllColumns (treeView);
 			string[] columnNames = queryResult.ColumnNames;
 			CellRendererText cellRendererText = new CellRendererText ();
 			for (int index = 0; index < columnNames.Length; index++) {
@@ -21,6 +22,26 @@ namespace GTK_Serpis
 			foreach (IList row in queryResult.Rows)
 				listStore.AppendValues (row);
 			treeView.Model = listStore;
+		}
+
+		private static void removeAllColumns (TreeView treeView){
+			TreeViewColumn[] columnas = treeView.Columns;
+			for (int i = 0; i < columnas.Length;i++)
+				treeView.RemoveColumn (columnas[i]);
+
+		}
+
+		public static object GetID(TreeView treeview){
+			TreeIter treeIter;
+			if (!treeview.Selection.GetSelected (out treeIter))
+				return null;
+			IList row = (IList)treeview.Model.GetValue (treeIter, 0);
+			return row [0];
+		}
+		public static bool IsSelected (TreeView treeView){
+			TreeIter treeIter;
+			return treeView.Selection.GetSelected (out treeIter);
+
 		}
 	}
 }

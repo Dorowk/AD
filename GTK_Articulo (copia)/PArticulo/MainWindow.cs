@@ -11,7 +11,6 @@ public partial class MainWindow: Gtk.Window
 	{
 		Build ();
 		Title = "Articulo";
-
 		Console.WriteLine ("MainWindow ctor.");
 		FillTreeView ();
 
@@ -33,7 +32,7 @@ public partial class MainWindow: Gtk.Window
 		treeView.Selection.Changed += delegate {
 			bool selected = TreeViewHelper.IsSelected(treeView);
 			removeAction.Sensitive = selected;
-			editAction.Sensitive = selected;
+		   	editAction.Sensitive = selected;
 		};
 
 		removeAction.Sensitive = false;
@@ -66,7 +65,5 @@ public partial class MainWindow: Gtk.Window
 
 		};
 	}
-
-
-
+	
 }
