@@ -1,10 +1,9 @@
 using System;
 using Gtk;
+using GTK_Serpis;
 using MySql.Data.MySqlClient;
 
-using GTK_Serpis;
-
-namespace PArticulo
+namespace GTK_Categoria
 {
 	class MainClass
 	{
@@ -12,7 +11,8 @@ namespace PArticulo
 		{
 			App.Instance.DbConnection = new MySqlConnection (
 				"Database=dbprueba;Data Source=localhost;User Id=root;Password=sistemas"
-			);
+				);
+
 			App.Instance.DbConnection.Open ();
 
 			Application.Init ();

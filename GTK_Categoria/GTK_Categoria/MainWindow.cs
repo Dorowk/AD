@@ -1,22 +1,21 @@
 using System;
 using Gtk;
-using PArticulo;
 using GTK_Serpis;
-using System.Collections;
 using System.Data;
+using GTK_Categoria;
 
 public partial class MainWindow: Gtk.Window
 {	
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
-		Title = "Articulo";
-		Console.WriteLine ("MainWindow ctor.");
+		Title = "Categoria";
+
 		FillTreeView ();
 
 		refreshAction.Activated += delegate{FillTreeView();};
 
-		newAction.Activated += delegate {new ArticuloView();};
+		newAction.Activated += delegate {new CategoriaView();};
 
 		removeAction.Activated += delegate {
 			object id = TreeViewHelper.GetID(treeView);
@@ -25,27 +24,20 @@ public partial class MainWindow: Gtk.Window
 
 		editAction.Activated += delegate {
 			object id = TreeViewHelper.GetID(treeView);
-			new ArticuloView(id);
+			new CategoriaView(id);
 
-	};
+		};
 
 		treeView.Selection.Changed += delegate {
 			bool selected = TreeViewHelper.IsSelected(treeView);
 			removeAction.Sensitive = selected;
-		   	editAction.Sensitive = selected;
+			editAction.Sensitive = selected;
 		};
 
 		removeAction.Sensitive = false;
 		editAction.Sensitive = false;
 
 
-
-
-	}
-
-	protected void FillTreeView(){
-		QueryResult queryResult = PersisterHelper.Get ("select * from articulo");
-		TreeViewHelper.Fill (treeView, queryResult);
 	}
 
 
@@ -55,15 +47,20 @@ public partial class MainWindow: Gtk.Window
 		a.RetVal = true;
 	}
 
+	protected void FillTreeView(){
+		QueryResult queryResult = PersisterHelper.Get ("select * from categoria");
+		TreeViewHelper.Fill (treeView, queryResult);
+	}
+
 	private void BorrarLinea (object id){
 		if (WindowHelper.ConfirmDelete (this)){
 			IDbCommand command = App.Instance.DbConnection.CreateCommand ();
-			string sentencia = string.Format ("delete from articulo where id={0}", id);
+			string sentencia = string.Format ("delete from categoria where id={0}", id);
 			command.CommandText = sentencia;
 			command.ExecuteNonQuery();
 			FillTreeView ();
 
 		};
 	}
-	
+
 }
