@@ -78,6 +78,8 @@
     <Compile Include="ArticuloView.cs" />
     <Compile Include="gtk-gui\PArticulo.ArticuloView.cs" />
     <Compile Include="gtk-gui\MainWindow.cs" />
+    <Compile Include="ArticuloPersister.cs" />
+    <Compile Include="Articulo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
