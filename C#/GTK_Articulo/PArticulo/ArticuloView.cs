@@ -10,24 +10,21 @@ namespace PArticulo
 
 	public partial class ArticuloView : Gtk.Window	
 	{	
-		private Articulo articulo = new Articulo();
-		private object id;
-		private object categoria = null;
-		private SaveDelegate save;
+
+		private Articulo articulo;
 
 		public ArticuloView ():base(Gtk.WindowType.Toplevel)
 		{
-			articulo.Nombre = "";
+			articulo = new Articulo();
 			init ();
-			save = insert;
+			saveAction.Activated +=delegate {insert();}
 	
 		}
 		public ArticuloView(object id):base(Gtk.WindowType.Toplevel)
 		{
-			this.id = id;
-			articulo.Nombre = "";
+			articulo = ArticuloPersister.Load(id);
 			init ();
-			save = update;
+			saveAction.Activated +=delegate {update();} 
 		}
 
 		private void init(){
@@ -38,27 +35,25 @@ namespace PArticulo
 			spinButtonPrecio.Value = Convert.ToDouble (articulo.Precio);
 			saveAction.Activated += delegate {	save();	};
 		}
+
+		private void updateModel(){
+			articulo.Nombre = entryNombre.Text;
+			articulo.Categoria = ComboBoxHelper.GetId (comboBoxCategoria);
+			articulo.Precio = Convert.ToDecimal(spinButtonPrecio.Value);
+
+		}
 	
 
 
 		private void insert() {
-			articulo.Nombre = entryNombre.Text;
-			articulo.Categoria = ComboBoxHelper.GetId (comboBoxCategoria);
-			articulo.Precio = Convert.ToDecimal(spinButtonPrecio.Value);
-
+			updateModel();
 			ArticuloPersister.Insert (articulo);
-
 			Destroy ();
 		}
 
 		private void update(){
-			articulo.Nombre = entryNombre.Text;
-			articulo.Categoria = ComboBoxHelper.GetId (comboBoxCategoria);
-			articulo.Precio = Convert.ToDecimal(spinButtonPrecio.Value);
-			articulo.Id = id;	
-
-			ArticuloPersister.Insert (articulo);
-
+			updateModel();
+			ArticuloPersister.Update(articulo);
 			Destroy ();
 		}
 	}
