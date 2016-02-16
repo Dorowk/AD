@@ -1,6 +1,5 @@
 package org.institutoserpis.ad;
 
-import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
